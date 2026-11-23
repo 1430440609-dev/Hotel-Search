@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>酒店价格查询</title><style>
+:root{--ink:#14241f;--muted:#708079;--bg:#f4f6f2;--line:#e4e9e3;--green:#285b48;--gold:#d8a85c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"PingFang SC","Microsoft Yahei",sans-serif}.hero{padding:44px max(calc((100vw - 1160px)/2),24px) 32px;background:#173b32;color:#fff;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:420px;height:420px;border:1px solid #ffffff20;border-radius:50%;right:8%;top:-300px;box-shadow:0 0 0 42px #ffffff09,0 0 0 84px #ffffff08}.eyebrow{color:#d8bd87;font-size:12px;letter-spacing:.18em;text-transform:uppercase}.hero h1{font-family:Georgia,"Noto Serif SC",serif;font-weight:500;font-size:clamp(32px,5vw,52px);margin:14px 0 8px}.hero p{color:#cad8d0;margin:0}.wrap{max-width:1160px;margin:auto;padding:24px}.controls{display:grid;grid-template-columns:1fr 220px;gap:12px;margin:0 0 18px}.controls input,.controls select{height:50px;padding:0 16px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font:inherit;outline:none}.controls input:focus,.controls select:focus{border-color:var(--green);box-shadow:0 0 0 3px #285b4814}.summary{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:13px;margin:0 2px 12px}.summary strong{color:var(--ink)}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:17px;min-height:150px;display:flex;flex-direction:column;justify-content:space-between;transition:.18s}.card:hover{border-color:#b8c9bd;transform:translateY(-2px);box-shadow:0 8px 22px #20392c0b}.top{display:flex;gap:10px;justify-content:space-between;align-items:flex-start}.hotel{font-size:16px;line-height:1.55;font-weight:650}.region{white-space:nowrap;background:#eff4ef;color:#426151;border-radius:20px;padding:5px 9px;font-size:11px}.details{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}.pill{font-size:12px;color:#58675f;background:#f6f7f4;border-radius:6px;padding:6px 8px}.price{color:#936524;background:#fbf5eb}.meal{color:#526d56;background:#eef5ee}.note{font-size:11px;color:#9b6b37}.card-actions{display:flex;justify-content:flex-end;margin-top:12px}.update-price{border:0;background:#f1f3f1;color:#758078;border-radius:20px;padding:5px 8px;font:inherit;font-size:11px;cursor:pointer;white-space:nowrap}.update-price:hover{background:#e5ebe6;color:#365846}.region-actions{display:flex;align-items:center;gap:5px}.update-dialog{position:fixed;inset:0;background:#10251db3;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.update-dialog.open{display:flex}.update-panel{background:white;border-radius:14px;padding:22px;width:min(460px,100%);box-shadow:0 20px 60px #0003}.update-panel h2{font-size:19px;margin:0 0 5px}.update-panel p{font-size:13px;color:var(--muted);margin:0 0 16px}.update-panel label{display:block;font-size:12px;color:var(--muted);margin:10px 0}.update-panel input,.update-panel select{display:block;width:100%;height:42px;margin-top:5px;padding:0 10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:white;color:var(--ink)}.empty{grid-column:1/-1;padding:56px;text-align:center;color:var(--muted);background:#fff;border-radius:12px}.foot{padding:22px 0 24px;text-align:center;color:#8a968f;font-size:12px}.add-area{margin:0 auto 26px;max-width:740px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}.add-toggle{display:block;margin:0 auto;border:0;border-radius:9px;background:var(--green);color:white;padding:13px 22px;font:inherit;font-weight:600;cursor:pointer}.add-toggle:hover{background:#1d4939}.add-form{display:none;margin-top:20px}.add-form.open{display:block}.add-form h2{font-size:19px;margin:0 0 14px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-grid label{font-size:12px;color:var(--muted)}.form-grid input,.form-grid select{display:block;width:100%;height:44px;margin-top:6px;padding:0 11px;border:1px solid var(--line);border-radius:8px;font:inherit;background:white;color:var(--ink)}.form-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}.form-actions button{border:0;border-radius:8px;padding:10px 16px;font:inherit;cursor:pointer}.save-btn{background:var(--green);color:white}.cancel-btn{background:#f0f2ee;color:var(--ink)}.form-hint{font-size:12px;color:var(--muted);margin:10px 0 0}@media(max-width:560px){.form-grid{grid-template-columns:1fr}}@media(max-width:850px){.cards{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.hero{padding:34px 22px 28px}.wrap{padding:18px}.controls{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.summary{align-items:flex-start;gap:8px;flex-direction:column}}
+</style></head><body><header class="hero"><div class="eyebrow">STAYS · WORLDWIDE</div><h1>酒店价格查询</h1><p>按地区寻找酒店，快速浏览房型与参考价格</p></header><main class="wrap"><section class="controls"><input id="q" placeholder="搜索酒店名、地区或房型…" aria-label="搜索"><select id="region" aria-label="筛选地区"><option value="">全部地区</option></select></section><div class="summary"><span id="count"></span><span>价格单位：CNY · 以实际预订为准</span></div><section class="cards" id="cards"></section><section class="add-area"><button id="toggleAdd" class="add-toggle" type="button">＋ 添加酒店价格</button><form id="addForm" class="add-form"><h2>添加酒店信息</h2><div class="form-grid"><label>酒店名称<input name="name" required placeholder="请输入酒店名称"></label><label>地区<input name="region" required placeholder="例如：伦敦"></label><label>价格（CNY）<input name="price" required placeholder="例如：1280"></label><label>房型<input name="room" required placeholder="例如：高级大床房"></label><label>是否含早<select name="meal"><option>未注明</option><option>含早餐</option><option>单早</option><option>双早</option><option>不含早餐</option></select></label><label>备注<input name="note" placeholder="可填写景观、差价等补充说明"></label></div><div class="form-actions"><button class="cancel-btn" id="cancelAdd" type="button">取消</button><button class="save-btn" type="submit">保存酒店</button></div><p class="form-hint">保存后会显示在列表中，并保存在此浏览器。</p></form></section><footer class="foot">价格与房型信息来自整理内容；未注明早餐的记录显示为“未注明”。请以实时查询和酒店确认为准。</footer></main><div id="updateDialog" class="update-dialog"><form id="updateForm" class="update-panel"><h2>更新酒店价格</h2><p id="updateHotel"></p><input type="hidden" name="id"><label>最新价格<input name="price" required placeholder="请输入最新价格"></label><label>房型<input name="room" required></label><label>是否含早<select name="meal"><option>未注明</option><option>含早餐</option><option>单早</option><option>双早</option><option>不含早餐</option></select></label><label>备注<input name="note" placeholder="可选"></label><div class="form-actions"><button class="cancel-btn" type="button" id="closeUpdate">取消</button><button class="save-btn" type="submit">保存新价格</button></div></form></div><script>
+const raw=`伦敦|伦敦W|3750|大床|未注明
+毛伊岛|威雷亚毛伊岛安达仕|2775|两张大床|未注明
+毛伊岛|威雷亚毛伊岛安达仕|2840|度假村景大床|未注明
+意大利|蒙泰马丁尼宫殿丽笙|1759|精选客房|未注明
+意大利|蒙泰马丁尼宫殿丽笙|1900|高级客房|未注明
+悉尼|悉尼波特豪斯酒店 - 美憬阁|1243|经典大床|未注明
+悉尼|悉尼波特豪斯酒店 - 美憬阁|1334|高级房|未注明
+卢克索|卢克索希尔顿度假村及水疗酒店|1120|未注明|未注明
+兰卡威|兰卡威瑞吉|1670|特大床|未注明
+魁北克|魁北克希尔顿|1030|山景大床/双床|未注明
+悉尼|悉尼温特沃什索菲特|2124|豪华房|未注明
+纽约|纽约时代广场W|2135|奇妙大床/双床|未注明
+吉隆坡|吉隆坡公园英迪格|709|标准房|单早
+悉尼|悉尼凯悦|1325|大床|未注明
+温哥华|温哥华大都会|868|双床/大床|未注明
+蒙特利尔|蒙特利尔山普林城堡万豪|1290|未注明|未注明
+东京|东京康莱德|2770|未注明|未注明
+圣芭芭拉|巴卡拉圣芭芭拉丽思卡尔顿|5190|未注明|未注明
+慕尼黑|慕尼黑巴亚普斯特索菲特|1730|未注明|未注明
+路易斯湖|路易斯湖费尔蒙|2140|特大床|未注明
+路易斯湖|路易斯湖费尔蒙|2430|山景房|未注明
+布拉格|布拉格丽笙|1060|未注明|未注明
+白金汉郡|白金汉郡兰利豪华|2430|未注明|未注明
+布达佩斯|布达佩斯大教堂丽笙臻选|1317|未注明|未注明
+洛杉矶|洛杉矶好莱坞西部安达仕|1006|未注明|未注明
+蒙特利尔|蒙特利尔凯悦尚萃|1060|市景房|未注明
+伦敦|伦敦诺玛德|3280|高级特大床|未注明
+维也纳|维也纳凯悦|1320|高层大床/双床|未注明
+吉隆坡|吉隆坡洲际|650|大床/双床|未注明
+布达佩斯|布达佩斯W|1067|大床|未注明
+布达佩斯|布达佩斯W|1670|双床|未注明
+布达佩斯|布达佩斯万豪|680|江河景大床/双床|未注明
+悉尼|悉尼伯兹角英迪格|910|大床/双床|未注明
+纽约|纽约法拉盛唐格拉姆万丽|1390|大床/双床|未注明
+西雅图|西雅图市中心万豪AC|660|大床/双床|未注明
+日光|日光丽思卡尔顿|3053|园景大床/双床|未注明|超大差价
+比佛利山庄|卡梅奥比佛利山庄|1669|未注明|未注明
+曼谷|曼谷丽思卡尔顿|1980|未注明|未注明
+台北|台北万豪|1125|大床/双床|未注明
+台北|台北国泰万怡|1130|未注明|未注明
+台北|台北慕轩酒店，臻品之选|1330|经典房|未注明
+台北|台北慕轩酒店，臻品之选|1520|豪华房|未注明
+迈阿密|迈阿密金普顿EPIC|1740|未注明|未注明
+未知地区|皇家兰花喜来登大酒店|678|未注明|未注明
+胡志明市|西贡JW万豪酒店和套房|980|未注明|未注明|差价大
+东京|东京金普顿|1860|未注明|未注明
+罗马|罗马艾美|769|特大床/三人间/双床|未注明|差价大
+开普敦|开普敦威斯汀|1217|豪华大床/双床|未注明
+伦敦|伦敦市政厅万豪|2755|豪华大床|未注明
+伦敦|伦敦市政厅万豪|3466|泰晤士河景大床|未注明
+伦敦|伦敦市政厅万豪|3644|大本钟景房|未注明
+纽约|纽约时代广场喜来登|1334|传统大床/双床|未注明
+米兰|米兰万豪|1230|豪华大床/双床|未注明
+温哥华|温哥华大都会饭店|884|大床/双床|未注明
+巴哈马|巴哈马瑰丽|3730|未注明|未注明|差价大
+罗马|罗马贝尔尼尼布里斯托尔辛那傲途格精选酒店|1840|高级大床/双床|未注明
+罗马|罗马贝尔尼尼布里斯托尔辛那傲途格精选酒店|2080|豪华大床/双床|未注明
+里约热内卢|里约热内卢JW万豪|850|大床/特大床/双床|未注明|大差价
+特罗姆瑟|特罗姆瑟丽笙|1000|标准房|未注明
+阿布扎比|Crowne Plaza 阿布扎比 - 亚斯岛|1044|公园房|单早
+阿布扎比|Crowne Plaza 阿布扎比 - 亚斯岛|1348|海景房|单早
+法兰克福|法兰克福JW万豪|1688|豪华房|未注明
+法兰克福|法兰克福JW万豪|1986|全景豪华房|未注明
+东京|东京湾ANA假日|1140|未注明|未注明|去迪士尼的基本都住东京湾
+罗马|罗马六善|4980|未注明|未注明|差价大
+开罗|开罗塞米勒米斯洲际|1162|豪华经典房|单早
+伦敦|伦敦碎片大厦|约330英镑|基础房|未注明
+伦敦|伦敦碎片大厦|约415英镑|城景房|未注明
+悉尼|悉尼索菲特|1470|高级房|未注明
+东京|东京新宿金普敦|1860|未注明|未注明
+巴厘岛|巴厘岛W|1368|未注明|未注明
+蒙特利尔|蒙特利尔伊丽莎白女王费尔蒙|1270|未注明|未注明
+黄金海岸|黄金海岸JW万豪|1264|山景特大床|未注明|去黄金海岸的一般都会去布里斯班
+布里斯班|布里斯班洲际|1115|豪华经典大床/双床|未注明
+黄金海岸|黄金海岸喜来登|1195|大床/双床|未注明
+札幌|札幌万怡|518|豪华/高级大床|未注明
+札幌|札幌万怡|670|双床|未注明
+奈良|奈良JW万豪|1700|豪华大床/双床|未注明
+京都|京都翠岚豪华精选|1800元以上|未注明|未注明|差价在1800+以上，价格一直变动，需要实时查询
+京都|京都四条乌丸希尔顿|740|高级双床|未注明
+京都|京都四条乌丸希尔顿|1430|家庭大床房|未注明
+京都|京都柏悦|4500+6500差价|积分房|未注明|协议价差价2800+，实时查询；只收支付宝/微信全款
+悉尼|悉尼Coogee海滩洲际|1090|未注明|未注明|差价大
+东京|东京皇家王子花园塔|1820|标准房|未注明
+伦敦|伦敦六善|4010|未注明|未注明
+布达佩斯|布达佩斯希尔顿|1170|高级大床/双床|未注明|多瑙河景观（网红房型）另有1630
+布达佩斯|布达佩斯希尔顿|1630|多瑙河景观房|未注明
+布拉格|布拉格W|1080|豪华大床/双床|未注明
+柏林|柏林华尔道夫|1299|未注明|未注明
+悉尼|悉尼瑞士大酒店|1350|高级大床/双床|未注明
+皇后镇|皇后镇VOCO|1125|未注明|未注明
+皇后镇|皇后镇诺富特|1334|未注明|未注明
+皇后镇|皇后镇希尔顿逸林|630|未注明|未注明
+雷克雅未克|冰岛雷克雅未克艾迪逊|2460|庭院大床/双床|未注明
+巴黎|罗浮宫凯悦|3090|未注明|未注明`;
+const data=raw.trim().split(/\r?\n/).map((line,i)=>{const [region,name,price,room,meal='未注明',note='']=line.split('|');return{region,name,price,room,meal,note,id:i}});
+const storageKey='hotel-price-custom-records';try{const saved=JSON.parse(localStorage.getItem(storageKey)||'[]');if(Array.isArray(saved))data.push(...saved)}catch{}
+const q=document.querySelector('#q'),sel=document.querySelector('#region'),cards=document.querySelector('#cards');[...new Set(data.map(x=>x.region))].sort((a,b)=>a.localeCompare(b,'zh')).forEach(r=>sel.add(new Option(r,r)));function render(){let term=q.value.trim().toLowerCase(),region=sel.value,rows=data.filter(x=>(!region||x.region===region)&&(!term||`${x.region}${x.name}${x.room}${x.meal}${x.note}`.toLowerCase().includes(term)));document.querySelector('#count').innerHTML=`找到 <strong>${rows.length}</strong> 条酒店价格`;cards.innerHTML=rows.length?rows.map(x=>`<article class="card"><div class="top"><div class="hotel">${x.name}</div><span class="region-actions"><span class="region">${x.region}</span><button type="button" class="update-price" data-id="${x.id}" aria-label="更新${x.name}价格">更新</button></span></div><div><div class="details"><span class="pill price">${x.price}${/^\d/.test(x.price)&&!x.price.includes('英镑')&&!x.price.includes('差价')?' CNY':''}</span><span class="pill">${x.room}</span><span class="pill meal">${x.meal.includes('早')?x.meal:'早餐'+x.meal}</span></div>${x.note?`<div class="note" style="margin-top:9px">${x.note}</div>`:''}</div></article>`).join(''):'<div class="empty">没有找到匹配的酒店，试试其他关键词。</div>'}q.addEventListener('input',render);sel.addEventListener('change',render);
+const dialog=document.querySelector('#updateDialog'),updateForm=document.querySelector('#updateForm');cards.addEventListener('click',event=>{const button=event.target.closest('.update-price');if(!button)return;const old=data.find(x=>String(x.id)===button.dataset.id);if(!old)return;updateForm.elements.id.value=old.id;updateForm.elements.price.value='';updateForm.elements.room.value=old.room==='未注明'?'':old.room;updateForm.elements.meal.value=old.meal;updateForm.elements.note.value='';document.querySelector('#updateHotel').textContent=old.name+' · '+old.region+' · 当前 '+old.price;dialog.classList.add('open');updateForm.elements.price.focus()});document.querySelector('#closeUpdate').addEventListener('click',()=>dialog.classList.remove('open'));dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.classList.remove('open')});updateForm.addEventListener('submit',event=>{event.preventDefault();const fields=new FormData(updateForm),old=data.find(x=>String(x.id)===fields.get('id'));if(!old)return;const entry={...old,id:Date.now(),price:fields.get('price').trim(),room:fields.get('room').trim(),meal:fields.get('meal'),note:fields.get('note').trim()||old.note,custom:true};data.push(entry);try{localStorage.setItem(storageKey,JSON.stringify(data.filter(x=>x.custom)))}catch{}dialog.classList.remove('open');render()});
+const addForm=document.querySelector('#addForm');document.querySelector('#toggleAdd').addEventListener('click',()=>{addForm.classList.toggle('open');if(addForm.classList.contains('open'))addForm.scrollIntoView({behavior:'smooth',block:'center'})});document.querySelector('#cancelAdd').addEventListener('click',()=>{addForm.reset();addForm.classList.remove('open')});addForm.addEventListener('submit',event=>{event.preventDefault();const fields=new FormData(addForm),entry={id:Date.now(),region:fields.get('region').trim(),name:fields.get('name').trim(),price:fields.get('price').trim(),room:fields.get('room').trim(),meal:fields.get('meal'),note:fields.get('note').trim(),custom:true};if(!entry.name||!entry.region||!entry.price||!entry.room)return;data.push(entry);try{const custom=data.filter(x=>x.custom);localStorage.setItem(storageKey,JSON.stringify(custom))}catch{}if(![...sel.options].some(o=>o.value===entry.region))sel.add(new Option(entry.region,entry.region));q.value='';sel.value='';addForm.reset();addForm.classList.remove('open');render()});render();
+</script></body></html>
+
+
+
+
+
