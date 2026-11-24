@@ -43,7 +43,9 @@ insert into public.hotel_prices (id,region,name,price,room,meal,note,ctrip_url,i
 (11,'美国·纽约','纽约时代广场W','2135','奇妙大床/双床','未注明','','https://hotels.ctrip.com/hotels/2193535.html',true),
 (12,'马来西亚·吉隆坡','吉隆坡公园英迪格','709','标准房','单早','','https://hotels.ctrip.com/hotels/110029160.html',true),
 (13,'澳大利亚·悉尼','悉尼凯悦','1325','大床','未注明','','https://hotels.ctrip.com/hotels/736895.html',true),
-(14,'加拿大·温哥华','温哥华大都会','868','双床/大床','未注明','','',true),
+(14,'加拿大·温哥华','温哥华大都会','868','双床/大床','未注明','','',true)
+on conflict (id) do nothing;
+insert into public.hotel_prices (id,region,name,price,room,meal,note,ctrip_url,is_seed) values
 (15,'加拿大·蒙特利尔','蒙特利尔山普林城堡万豪','1290','未注明','未注明','','https://hotels.ctrip.com/hotels/2193272.html',true),
 (16,'日本·东京','东京康莱德','2770','未注明','未注明','','https://hotels.ctrip.com/hotels/1572622.html',true),
 (17,'美国·圣芭芭拉','巴卡拉圣芭芭拉丽思卡尔顿','5190','未注明','未注明','','https://hotels.ctrip.com/hotels/2542471.html',true),
@@ -58,7 +60,9 @@ insert into public.hotel_prices (id,region,name,price,room,meal,note,ctrip_url,i
 (26,'英国·伦敦','伦敦诺玛德','3280','高级特大床','未注明','','https://hotels.ctrip.com/hotels/75431932.html',true),
 (27,'奥地利·维也纳','维也纳凯悦','1320','高层大床/双床','未注明','','https://hotels.ctrip.com/hotels/31600233.html',true),
 (28,'马来西亚·吉隆坡','吉隆坡洲际','650','大床/双床','未注明','','https://hotels.ctrip.com/hotels/928173.html',true),
-(29,'匈牙利·布达佩斯','布达佩斯W','1067','大床','未注明','','https://hotels.ctrip.com/hotels/107956431.html',true),
+(29,'匈牙利·布达佩斯','布达佩斯W','1067','大床','未注明','','https://hotels.ctrip.com/hotels/107956431.html',true)
+on conflict (id) do nothing;
+insert into public.hotel_prices (id,region,name,price,room,meal,note,ctrip_url,is_seed) values
 (30,'匈牙利·布达佩斯','布达佩斯W','1670','双床','未注明','','https://hotels.ctrip.com/hotels/107956431.html',true),
 (31,'匈牙利·布达佩斯','布达佩斯万豪','680','江河景大床/双床','未注明','','',true),
 (32,'澳大利亚·悉尼','悉尼伯兹角英迪格','910','大床/双床','未注明','','',true),
@@ -73,7 +77,9 @@ insert into public.hotel_prices (id,region,name,price,room,meal,note,ctrip_url,i
 (41,'中国台湾·台北','台北慕轩酒店，臻品之选','1520','豪华房','未注明','','https://hotels.ctrip.com/hotels/735549.html',true),
 (42,'美国·迈阿密','迈阿密金普顿EPIC','1740','未注明','未注明','','',true),
 (43,'待识别·未知地区','皇家兰花喜来登大酒店','678','未注明','未注明','','https://hotels.ctrip.com/hotels/2171593.html',true),
-(44,'越南·西贡','西贡JW万豪酒店和套房','980','未注明','未注明','差价大','https://hotels.ctrip.com/hotels/123264350.html',true),
+(44,'越南·西贡','西贡JW万豪酒店和套房','980','未注明','未注明','差价大','https://hotels.ctrip.com/hotels/123264350.html',true)
+on conflict (id) do nothing;
+insert into public.hotel_prices (id,region,name,price,room,meal,note,ctrip_url,is_seed) values
 (45,'日本·东京','东京金普顿','1860','未注明','未注明','','https://hotels.ctrip.com/hotels/51050461.html',true),
 (46,'意大利·罗马','罗马艾美','769','特大床/三人间/双床','未注明','差价大','',true),
 (47,'南非·开普敦','开普敦威斯汀','1217','豪华大床/双床','未注明','','',true),
@@ -88,7 +94,9 @@ insert into public.hotel_prices (id,region,name,price,room,meal,note,ctrip_url,i
 (56,'意大利·罗马','罗马贝尔尼尼布里斯托尔辛那傲途格精选酒店','2080','豪华大床/双床','未注明','','https://hotels.ctrip.com/hotels/760934.html',true),
 (57,'巴西·里约热内卢','里约热内卢JW万豪','850','大床/特大床/双床','未注明','大差价','',true),
 (58,'挪威·特罗姆瑟','特罗姆瑟丽笙','1000','标准房','未注明','','',true),
-(59,'阿联酋·阿布扎比','Crowne Plaza 阿布扎比 - 亚斯岛','1044','公园房','单早','','',true),
+(59,'阿联酋·阿布扎比','Crowne Plaza 阿布扎比 - 亚斯岛','1044','公园房','单早','','',true)
+on conflict (id) do nothing;
+insert into public.hotel_prices (id,region,name,price,room,meal,note,ctrip_url,is_seed) values
 (60,'阿联酋·阿布扎比','Crowne Plaza 阿布扎比 - 亚斯岛','1348','海景房','单早','','',true),
 (61,'德国·法兰克福','法兰克福JW万豪','1688','豪华房','未注明','','',true),
 (62,'德国·法兰克福','法兰克福JW万豪','1986','全景豪华房','未注明','','',true),
@@ -103,7 +111,9 @@ insert into public.hotel_prices (id,region,name,price,room,meal,note,ctrip_url,i
 (71,'加拿大·蒙特利尔','蒙特利尔伊丽莎白女王费尔蒙','1270','未注明','未注明','','',true),
 (72,'澳大利亚·黄金海岸','黄金海岸JW万豪','1264','山景特大床','未注明','去黄金海岸的一般都会去布里斯班','https://hotels.ctrip.com/hotels/2132724.html',true),
 (73,'澳大利亚·布里斯班','布里斯班洲际','1115','豪华经典大床/双床','未注明','','https://hotels.ctrip.com/hotels/2192847.html',true),
-(74,'澳大利亚·黄金海岸','黄金海岸喜来登','1195','大床/双床','未注明','','',true),
+(74,'澳大利亚·黄金海岸','黄金海岸喜来登','1195','大床/双床','未注明','','',true)
+on conflict (id) do nothing;
+insert into public.hotel_prices (id,region,name,price,room,meal,note,ctrip_url,is_seed) values
 (75,'日本·札幌','札幌万怡','518','豪华/高级大床','未注明','','',true),
 (76,'日本·札幌','札幌万怡','670','双床','未注明','','',true),
 (77,'日本·奈良','奈良JW万豪','1700','豪华大床/双床','未注明','','',true),
@@ -118,7 +128,9 @@ insert into public.hotel_prices (id,region,name,price,room,meal,note,ctrip_url,i
 (86,'匈牙利·布达佩斯','布达佩斯希尔顿','1630','多瑙河景观房','未注明','','',true),
 (87,'捷克·布拉格','布拉格W','1080','豪华大床/双床','未注明','','https://hotels.ctrip.com/hotels/112903429.html',true),
 (88,'德国·柏林','柏林华尔道夫','1299','未注明','未注明','','',true),
-(89,'澳大利亚·悉尼','悉尼瑞士大酒店','1350','高级大床/双床','未注明','','',true),
+(89,'澳大利亚·悉尼','悉尼瑞士大酒店','1350','高级大床/双床','未注明','','',true)
+on conflict (id) do nothing;
+insert into public.hotel_prices (id,region,name,price,room,meal,note,ctrip_url,is_seed) values
 (90,'新西兰·皇后镇','皇后镇VOCO','1125','未注明','未注明','','',true),
 (91,'新西兰·皇后镇','皇后镇诺富特','1334','未注明','未注明','','https://hotels.ctrip.com/hotels/2196343.html',true),
 (92,'新西兰·皇后镇','皇后镇希尔顿逸林','630','未注明','未注明','','https://hotels.ctrip.com/hotels/2196883.html',true),
