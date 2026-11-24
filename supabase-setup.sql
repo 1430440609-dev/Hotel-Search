@@ -15,13 +15,15 @@ create table if not exists public.hotel_prices (
 
 alter table public.hotel_prices enable row level security;
 grant select on public.hotel_prices to anon, authenticated;
-grant insert, update, delete on public.hotel_prices to authenticated;
-grant usage, select on sequence public.hotel_prices_id_seq to authenticated;
+grant insert on public.hotel_prices to anon, authenticated;
+grant update, delete on public.hotel_prices to authenticated;
+grant usage, select on sequence public.hotel_prices_id_seq to anon, authenticated;
 
 drop policy if exists "public can read hotels" on public.hotel_prices;
 create policy "public can read hotels" on public.hotel_prices for select to anon, authenticated using (true);
 drop policy if exists "owner can insert hotels" on public.hotel_prices;
-create policy "owner can insert hotels" on public.hotel_prices for insert to authenticated with check (created_by = auth.uid() and lower(coalesce(auth.jwt()->>'email','')) = '1430440609@qq.com');
+drop policy if exists "anyone can add hotels" on public.hotel_prices;
+create policy "anyone can add hotels" on public.hotel_prices for insert to anon, authenticated with check (is_seed = false and (created_by is null or created_by = auth.uid()));
 drop policy if exists "owner can update hotels" on public.hotel_prices;
 create policy "owner can update hotels" on public.hotel_prices for update to authenticated using (lower(coalesce(auth.jwt()->>'email','')) = '1430440609@qq.com') with check (lower(coalesce(auth.jwt()->>'email','')) = '1430440609@qq.com');
 drop policy if exists "owner can delete hotels" on public.hotel_prices;
